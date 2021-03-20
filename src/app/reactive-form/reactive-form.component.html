@@ -1,0 +1,32 @@
+<div>
+<form [formGroup]="myform" (ngSubmit)="postdata()">
+<input type="text" formControlName="name" placeholder="Name"> <br>
+
+<input type="password" formControlName="password" placeholder="password"> <br>
+
+<input type="password" formControlName="confpassword" placeholder="confpassword"> <br>
+
+<input type="email" formControlName="email" placeholder="email">
+<button (click)="addalternateemail()">AddEmail</button>
+<br>
+<div formArrayName="alternatemail" *ngFor="let email of alternatemail.controls;let i=index">
+<input type="text" [formControlName]="i">
+</div>
+<input type="checkbox" formControlName="subscrib">Check me
+
+
+
+<div formGroupName="address">
+<input type="text" formControlName="city" placeholder="city"> <br>
+
+<input type="text" formControlName="state" placeholder="state"> <br>
+
+<input type="text" formControlName="postalcode" placeholder="postalcode"> <br>
+</div>
+
+<button [disabled]="!myform.valid">Submit</button>
+
+</form>
+</div>
+<button (click)="loadApidata()">LoadApidata</button>
+<!--<p>{{myform.value|json}}</p>-->
